@@ -55,6 +55,7 @@ const style = {
   p: 4,
 };
 
+
 const Cart = () => {
   const cartItems = useSelector(state => state.cart.items);
   console.log(uniqid());
@@ -73,8 +74,6 @@ const Cart = () => {
     setOrderId(orderId)
     handleOpen();
   };
-
-  // console.log(cartItems, "Cart Items")
 
   useEffect(() => {
     dispatch(addCount(count));
@@ -124,7 +123,7 @@ const Cart = () => {
       </TableContainer>
 
       <div>
-        {cartItems.length > 0 && <Button onClick={generateOrder}>Place my order</Button>}
+        {cartItems.length > 0 && <Button variant="contained" onClick={generateOrder}>Place my order</Button>}
 
         <Modal
           open={open}
