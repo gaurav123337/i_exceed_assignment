@@ -13,7 +13,7 @@ const Login = (props) => {
   const fetchData = (e) => {
     console.log(formVal);
     if (userData.id === formVal.name && userData.password === formVal.pwd) {
-      navigate("/allProducts");
+      navigate("/home");
     }
     resetInputs();
 
