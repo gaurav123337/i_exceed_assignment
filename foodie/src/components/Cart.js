@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
+import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -20,6 +21,28 @@ import MyOrder from "components/MyOrder";
 import { useDispatch, useSelector } from "react-redux";
 import { addCount } from "actions/action";
 
+
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -35,7 +58,6 @@ const style = {
 const Cart = () => {
   const cartItems = useSelector(state => state.cart.items);
   console.log(uniqid());
-  // const cartItems = useSelector(state => state);
 
   const dispatch = useDispatch();
   const [count, setCount] = useState(0);
@@ -52,7 +74,7 @@ const Cart = () => {
     handleOpen();
   };
 
-  console.log(cartItems, "Cart Items")
+  // console.log(cartItems, "Cart Items")
 
   useEffect(() => {
     dispatch(addCount(count));
@@ -74,34 +96,28 @@ const Cart = () => {
 
   return (
     <>
-      {/* <p>
-        Item count: {count}
-        <span>Total : {price}</span>
-      </p> */}
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="caption table">
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <caption>Total Cart Price: {price} - Item Quantity: {count}</caption>
           <TableHead>
             <TableRow>
-              <TableCell align="right">Item Name</TableCell>
-              <TableCell align="right">Price</TableCell>
-              <TableCell align="right">Action</TableCell>
-              <TableCell align="right">Qty</TableCell>
+              <StyledTableCell>Item Name</StyledTableCell>
+              <StyledTableCell align="right">Price</StyledTableCell>
+              <StyledTableCell align="right">Action</StyledTableCell>
+              <StyledTableCell align="right">Qty</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {cartItems.length > 0 && cartItems.map((item, index) => (
-              <TableRow key={item.id} >
-                <TableCell align="right" component="th" scope="row">
+              <StyledTableRow key={item.id}>
+                <StyledTableCell component="th" scope="row">
                   {item.itemName}
-                </TableCell>
-                <TableCell align="right">{item.price}</TableCell>
-                <TableCell align="right"><button onClick={(e) => increaseItem(item)} className="btn btn-primary">+</button>
-                  <button onClick={(e) => decreaseItem(item)} className="btn btn-danger">-</button>
-                </TableCell>
-
-                <TableCell align="right">{item.qty}</TableCell>
-              </TableRow>
+                </StyledTableCell>
+                <StyledTableCell align="right">{item.price}</StyledTableCell>
+                <StyledTableCell align="right"><button onClick={(e) => increaseItem(item)} className="btn btn-primary">+</button>
+                  <button onClick={(e) => decreaseItem(item)} className="btn btn-danger">-</button></StyledTableCell>
+                <StyledTableCell align="right">{item.qty}</StyledTableCell>
+              </StyledTableRow>
             ))}
           </TableBody>
         </Table>
