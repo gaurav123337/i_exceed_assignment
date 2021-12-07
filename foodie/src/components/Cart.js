@@ -52,8 +52,6 @@ const Cart = () => {
     handleOpen();
   };
 
-
-  // console.log(cartItems.cart.items, "Cart Items", cartItems?.cart)
   console.log(cartItems, "Cart Items")
 
   useEffect(() => {
@@ -119,7 +117,7 @@ const Cart = () => {
       </p> */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="caption table">
-          <caption>Total : {price}</caption>
+          <caption>Total Cart Price: {price} - Item Quantity: {count}</caption>
           <TableHead>
             <TableRow>
               <TableCell align="right">Item Name</TableCell>
@@ -147,7 +145,8 @@ const Cart = () => {
       </TableContainer>
 
       <div>
-        <Button onClick={generateOrder}>Place my order</Button>
+        {cartItems.length > 0 && <Button onClick={generateOrder}>Place my order</Button>}
+
         <Modal
           open={open}
           onClose={handleClose}
@@ -165,8 +164,6 @@ const Cart = () => {
                 cartItems ? (cartItems.length > 0 && (<MyOrder cartDesc={cartItems} orderId={orderId} />)) : null
               }
             </Typography>
-
-
           </Box>
         </Modal>
       </div>

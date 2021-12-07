@@ -13,8 +13,10 @@ import store from "reducers/store";
 import Entry from "pages/Entry";
 import Header from "components/Header";
 import ShowProducts from "./pages/ShowProducts";
+import MyCart from "pages/MyCart";
 
 function App() {
+
   return (
     <Provider store={store}>
       <Router>
@@ -22,7 +24,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Entry />} />
-            <Route path="/home" element={<ShowProducts />} />
+            <Route exact path="/home" element={<ShowProducts />} />
+            <Route exact path="/myCart" element={<MyCart />} />
           </Routes>
         </div>
       </Router>

@@ -14,21 +14,21 @@ var itemData = [{
   id: 2,
   itemName: "Idly",
   price: 30,
-  desc: "Lightweight but full of mouth watering taste that wakes you up from your morning sleep",
+  desc: "Lightweight dish",
   imagePath: "./Images/Idly.jpg",
   qty: 0
 }, {
   id: 3,
   itemName: "Pavbhaji",
   price: 40,
-  desc: "favourite Maharashtrian  dish",
+  desc: "favourite Maharashtrian dish",
   imagePath: "./Images/Paavbhaji.jpg",
   qty: 0
 }, {
   id: 4,
   itemName: "Momos",
   price: 70,
-  desc: "East India is waiting to make your day delicious",
+  desc: "East Indian dish",
   imagePath: "./Images/Momos.jpg",
   qty: 0
 }]

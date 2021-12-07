@@ -4,19 +4,32 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "actions/action";
 
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Button } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+
 
 import { itemData } from "utiltiy/data";
+
+const useStyles = makeStyles({
+  root: {
+    listStyle: "none",
+    padding: "10px 30px",
+    display: "inline-block",
+    float: "left"
+  },
+});
 
 const ItemList = (props) => {
   // const [count, setCount] = useState(0);
   // const [price, setPrice] = useState(0);
   const dispatch = useDispatch();
-
+  const classes = useStyles();
   // useEffect(() => {
   //   console.log(count, "caount value");
   //   dispatch(addToCart(count));
@@ -42,35 +55,27 @@ const ItemList = (props) => {
         {
           itemData ? (itemData.length > 0 && itemData.map((product, index) => {
             return (
-              <li key={index}>
-                <div style={{ width: "200px" }} className="border-around">
-                  <label>Product Name: {product.itemName}</label>
-                  <img alt="my product" src={product.imagePath} height={100} width={100} />
-                  <p className="text-center w-100">
-                    Description : <span>{product.desc}</span>
-                  </p>
-                  <p className="text-center w-100">
-                    Price : <span>{product.price}</span>
-                  </p>
-                  <Stack direction="row" alignItems="center" spacing={1}>
 
-                    {/* <IconButton aria-label="delete" size="small" onClick={(e) => decreaseCount(product)}>
-                      <DeleteIcon fontSize="inherit" />
-                    </IconButton>
-
-                    <IconButton color="primary" aria-label="add to shopping cart" onClick={(e) => increaseCount(product)}>
-                      <AddShoppingCartIcon />
-                    </IconButton> */}
-
-                    {/* <p>
-                      <span>Count: {product.qty}</span>
-                      <span>Total Item Price: {product.price * product.qty}</span>
-                    </p> */}
-                    <p>
-                      <Button onClick={() => dispatch(addToCart(product, { type: "GET_CART_ITEM" }))}>Add to cart</Button>
-                    </p>
-                  </Stack>
-                </div>
+              <li key={index} className={classes.root}>
+                <Card sx={{ width: 300 }} elevation={3}>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={product.imagePath}
+                    alt={product.itemName}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {product.itemName}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {product.desc}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" onClick={() => dispatch(addToCart(product, { type: "GET_CART_ITEM" }))}>Add to cart</Button>
+                  </CardActions>
+                </Card>
               </li>
             )
           })) : null
