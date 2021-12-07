@@ -55,13 +55,10 @@ const Cart = () => {
   console.log(cartItems, "Cart Items")
 
   useEffect(() => {
-    //console.log(count, "caount value");
     dispatch(addCount(count));
   }, [count]);
 
   const increaseItem = (item) => {
-
-    // console.log(item);
     setCount(count + 1);
     setPrice(price + +item.price);
     item.qty = item.qty + 1;
@@ -77,40 +74,6 @@ const Cart = () => {
 
   return (
     <>
-      {/* <div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Item Name</th>
-              <th scope="col">Price</th>
-              <th scope="col">Action</th>
-              <th scope="col">Qty</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              cartItems ? (cartItems.length > 0 && cartItems.map((item, index) => {
-                return (
-                  <tr key={item.id}>
-                    <th scope="row" >{index}</th>
-                    <td>{item.itemName}</td>
-                    <td>{item.price}</td>
-                    <td><button onClick={(e) => increaseItem(item)} className="btn btn-primary">+</button>
-                      <button onClick={(e) => decreaseItem(item)} className="btn btn-danger">-</button></td>
-                    <td>{item.qty}</td>
-                  </tr>
-                )
-              })) : null
-            }
-          </tbody>
-        </table>
-        <p>
-          Item count: {count}
-          <span>Total : {price}</span>
-        </p>
-      </div> */}
-
       {/* <p>
         Item count: {count}
         <span>Total : {price}</span>

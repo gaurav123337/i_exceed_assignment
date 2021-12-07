@@ -33,9 +33,6 @@ const Header = () => {
   const isLogin = localStorage.getItem("isLogin");
   console.log(isLogin, "In header");
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -99,9 +96,6 @@ const Header = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        {/* <MenuItem>
-          <Avatar /> Profile
-        </MenuItem> */}
         <MenuItem>
           <Avatar /> My account
         </MenuItem>

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "actions/action";
 
 import Card from "@mui/material/Card";
@@ -10,9 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
 import { makeStyles } from "@mui/styles";
-
 
 import { itemData } from "utiltiy/data";
 
@@ -26,29 +23,8 @@ const useStyles = makeStyles({
 });
 
 const ItemList = (props) => {
-  // const [count, setCount] = useState(0);
-  // const [price, setPrice] = useState(0);
   const dispatch = useDispatch();
   const classes = useStyles();
-  // useEffect(() => {
-  //   console.log(count, "caount value");
-  //   dispatch(addToCart(count));
-  // }, [count]);
-
-  // const increaseCount = (item) => {
-  //   setCount(count + 1);
-  //   setPrice(price + item.price);
-  //   item.qty = item.qty + 1;
-  // }
-
-  // const decreaseCount = (item) => {
-  //   if (item.qty > 0) {
-  //     item.qty = item.qty - 1;
-  //     setCount(count - 1);
-  //     setPrice(price - item.price);
-  //   }
-  // }
-
   return (
     <>
       <ul>
