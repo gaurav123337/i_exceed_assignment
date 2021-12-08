@@ -1,4 +1,5 @@
 const cartReducer = (state = "", action) => {
+  console.log(state, "State", action.payload, "payload");
   switch (action.type) {
     case "GET_COUNT":
       console.log({ ...state, count: action.payload })
@@ -10,7 +11,11 @@ const cartReducer = (state = "", action) => {
       uniqueData = x.items.filter((val, index) => x.items.indexOf(val) === index);
       console.log(uniqueData, "uniqueData");
       return { ...state, items: [...uniqueData] };
+    case "CLEAR_DATA":
+      console.log({ ...state, items: [] })
+      return { ...state, items: [] };
     default:
+      console.log("Indefault");
       return state;
   }
 }

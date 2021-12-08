@@ -23,11 +23,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
+import { useDispatch } from "react-redux";
+import { clearData } from "actions/action";
+
 // const pages = ["Home", "My Cart"];
 // const settings = ["My Account", "Sign out"];
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const open = Boolean(anchorEl);
   const isLogin = localStorage.getItem("isLogin");
@@ -57,6 +61,7 @@ const Header = () => {
 
   const signOut = () => {
     localStorage.removeItem("isLogin");
+    dispatch(clearData({}));
     navigate("/");
   }
 

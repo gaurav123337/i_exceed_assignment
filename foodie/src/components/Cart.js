@@ -58,7 +58,7 @@ const style = {
 
 const Cart = () => {
   const cartItems = useSelector(state => state.cart.items);
-  console.log(uniqid());
+  console.log(uniqid(), cartItems, "In cart js");
 
   const dispatch = useDispatch();
   const [count, setCount] = useState(0);
@@ -77,6 +77,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(addCount(count));
+
   }, [count]);
 
   const increaseItem = (item) => {

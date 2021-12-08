@@ -13,3 +13,11 @@ export const addCount = (data) => {
     payload: data
   }
 }
+
+export const clearData = (data) => {
+  console.log(data, "In action");
+  return {
+    type: "CLEAR_DATA",
+    payload: data
+  }
+}
