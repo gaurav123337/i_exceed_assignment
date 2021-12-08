@@ -47,6 +47,9 @@ const ItemList = (props) => {
                     <Typography variant="body2" color="text.secondary">
                       {product.desc}
                     </Typography>
+                    <Typography gutterBottom variant="h6" component="div">
+                      Price:-{product.price}
+                    </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" onClick={() => dispatch(addToCart(product, { type: "GET_CART_ITEM" }))}>Add to cart</Button>
