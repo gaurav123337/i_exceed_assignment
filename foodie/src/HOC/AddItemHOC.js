@@ -1,6 +1,3 @@
-
-// const IronMan = withSuit(TonyStark);
-
 import React, { Component } from "react";
 
 const AddItemHOC = (PassComponent) => {
@@ -27,11 +24,11 @@ const AddItemHOC = (PassComponent) => {
     resetInputs = (e) => {
       let x = {};
       for (let property in this.state.formVal) {
-        console.log(property)
+        // console.log(property)
         x[property] = "";
       }
       this.setState({ formVal: x }, () => {
-        console.log(this.state.formVal, "Reset")
+        // console.log(this.state.formVal, "Reset")
       });
     }
 

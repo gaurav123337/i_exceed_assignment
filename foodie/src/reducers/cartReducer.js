@@ -2,7 +2,7 @@ const cartReducer = (state = "", action) => {
   console.log(state, "State", action.payload, "payload");
   switch (action.type) {
     case "GET_COUNT":
-      console.log({ ...state, count: action.payload })
+      console.log({ ...state, count: action.payload }, "in getCount");
       return { ...state, count: action.payload };
     case "GET_CART_ITEM":
       console.log({ ...state, items: [action.payload] });
